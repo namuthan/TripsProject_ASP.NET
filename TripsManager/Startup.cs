@@ -19,19 +19,12 @@ namespace TripsManager
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        //This method is called per request - it is used to configure the middlewares
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole();
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
+            //www is acting as the root of our websites
+            app.UseDefaultFiles(); //figure out to default to index.html
+            app.UseStaticFiles();  //figure out to serve static files from the root(www)
         }
     }
 }

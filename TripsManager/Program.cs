@@ -12,13 +12,13 @@ namespace TripsManager
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
-                .UseKestrel()
+                .UseKestrel() //webserver
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
-                .UseStartup<Startup>()
+                .UseStartup<Startup>() //set up script
                 .Build();
 
-            host.Run();
+            host.Run(); //start the webserver
         }
     }
 }
